@@ -1,0 +1,10 @@
+// _mixins
+// ========
+@mixin backImageFullPage($image) {
+  background: url($image) no-repeat; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}

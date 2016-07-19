@@ -4,96 +4,146 @@
 //Compass imports
 @import "compass";
 @import "compass/reset";
+//@import "compass/css3";
+@import "compass/utilities";
+
+@import "font-awesome/font-awesome.scss"; 
 
 //Core partials
 @import "variables";
 
+
 html, body {
-	background: $lightBlue;
+	background-color: $whitecloud;
+	font-size: $rootSize;
 }
 
+.button {
+	display: inline-block;
+	text-decoration: none;
+	border-radius: 0.3em;
+	//margin: 0.25em;
+	padding: 0.4em 1em;
+	//border: solid 1px;
+}
 header {
-	background-image: url($pageBgImg);
-	background-size: cover;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
+	//background-image: url($pageBgImg);
+	background: url($pageBgImg) no-repeat center center; 
+	@include background-size(cover);
 	height: 100vh;
-	margin-bottom: 50px;
 }
-section.title {
+#page-title {
 	font-family: $headFont;
+	font-size: 2rem;
+	//font-size: 1.7rem; //v2
 	color: $darkNavy;
-	display: flex;
-	flex-direction: column;
-	padding-top: 48px;
-	padding-left: 140px;
-	//justify-content: center;
-	//align-items: center;
-	-webkit-animation: fadein 3.5s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 3.5s; /* Firefox < 16 */
-        -ms-animation: fadein 3.5s; /* Internet Explorer */
-         -o-animation: fadein 3.5s; /* Opera < 12.1 */
-            animation: fadein 3.5s;
+	//display: flex;
+	//flex-direction: column;
+	padding: 48px 0 0 240px;
+	//padding: 48px 30px 0 0; //v2 
+	@include animation(fadein 3.5s);
+	h1 {
+		//width: 700px; margin-left: auto; //v2
+		font-size: 2em;
+		letter-spacing: 10px;
+		.trains{
+			position: relative;
+			padding: 0px 15px;
+			margin: 0px 15px;
+		}
+		.trains:before{
+			border-left: 1px solid $darkNavy;
+			position: absolute;
+		    top: 30%;
+		    left: 0;
+		    height: 50%;
+			content: "";
+		}
+	}
+	h2 {
+		//width: 700px; margin-left: auto; //v2
+		font-size: 1em;
+		margin-top: 24px;
+	}
 }
-@keyframes fadein {
+@include keyframes(fadein) {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+#providers {
+	font-size: 0.8em;
+	margin: 1.2em 0;
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0,0.4);
+	&:hover {
+    background-color: rgba(0,0,0,0.7);
+	}
 }
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+#about {
+	font-family: $bodyFont;
+	font-size: 1em;
+	color: $gray20;
+	border-top: 4px gray solid;
+	border-bottom: 4px gray solid;
+	padding: 80px 0;
+	@include clearfix;
 }
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+#services {
+	article {
+		@include box-sizing(border-box);
+		margin: 10px 0 30px 15%;
+		aside {
+			@include box-sizing(border-box);
+			display: inline-block;
+			vertical-align: top;
+			font-size: 0.9em;
+			//border: solid #ebf0f9 1px;
+			margin: 0 1.2em 1.2em 0;
+		}
+		div {
+			@include box-sizing(border-box);
+			display: inline-block;
+			vertical-align: top;
+			width: 70%;
+			max-width: 30em;
+			margin-left: 3em;
+		}
+		h2 {
+			position: relative;
+			height: 1.5em;
+			font-size: 1.3em;
+			//font-variant: small-caps;
+			//padding-left: 15px;
+		}
+		h2:before {
+			position: absolute;
+			border-left: 3px solid #7b8dad;
+		    left: -1em;
+		    height: 120%;
+			content: "";
+		}
+		p { 
+			font-size: 0.85em;
+			line-height: 1.3em;
+			//font-variant: small-caps;
+			//padding-left: 15px;
+		}
+	}
 }
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+footer {
+	border-top: 4px gray solid;
+	border-bottom: 4px gray solid;
+	padding: 100px 0;
 }
-
-h1 {
-	font-size: 4em;
-	letter-spacing: 10px;
-
+.button-getdata {
+	color: $darkNavy;
+	background-color: rgba(113, 140, 189, 0.4);
+	padding: 0.6em;
+	&:hover {
+	color: white;
+	background-color: $darkNavy;
+	box-shadow: 0px 0px 0px 2px $darkNavy outset, 0px 0px 0px 1px white  outset; 
+	@include transition(all 300ms);
+	}
 }
-h1 .trains{
-	position: relative;
-	padding: 0px 15px;
-	margin: 0px 15px;
-}
-h1 .trains:before{
-	border-left: 1px solid $darkNavy;
-	position: absolute;
-    top: 30%;
-    left: 0;
-    height: 50%;
-	content: "";
-}
-.tagline {
-	font-size: 2.6em;
-	margin-top: 24px;
-}
-p {
-	max-width: 600px;
-	margin: auto;
-}
-
-/*
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
-
-body {
-  font: 100% $font-stack;
-  color: $primary-color; 
-}
-*/
